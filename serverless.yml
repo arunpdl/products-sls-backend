@@ -18,6 +18,8 @@ provider:
         - "dynamodb:UpdateItem"
         - "dynamodb:DeleteItem"
       Resource: arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:service}-productTable-${sls:stage}
+  httpApi:
+    cors: true
 
 functions:
   createProduct:
