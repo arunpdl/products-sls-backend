@@ -3,7 +3,9 @@ const AWS = require("aws-sdk");
 const formatResponse = require("./formatResponse");
 
 module.exports.createProduct = async (event, context) => {
-  console.log("Received event:", event);
+  if (!event)
+    return formatResponse({ message: "Missing product data", status: 400 });
+  console.log("name", event.name);
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
   const putParams = {
     TableName: process.env.DYNAMODB_PRODUCT_TABLE,
