@@ -1,6 +1,11 @@
 {
-  "dependencies": {
-    "aws-sdk": "^2.1386.0"
+  "name": "products-sls-backend",
+  "description": "AWS Serverless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {}
+  "author": "arunpdl",
+  "license": "ISC"
 }
