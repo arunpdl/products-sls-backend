@@ -3,16 +3,16 @@ const AWS = require("aws-sdk");
 const formatResponse = require("./formatResponse");
 
 module.exports.createProduct = async (event, context) => {
-  const body = JSON.parse(Buffer.from(event.body, "base64").toString());
+  console.log("Received event:", event);
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
   const putParams = {
     TableName: process.env.DYNAMODB_PRODUCT_TABLE,
     Item: {
       id: context.awsRequestId,
-      price: body.price,
-      name: body.name,
-      description: body.description,
-      imageUrl: body.imageUrl,
+      price: event.price,
+      name: event.name,
+      description: event.description,
+      imageUrl: event.imageUrl,
     },
   };
   await dynamoDb.put(putParams).promise();
