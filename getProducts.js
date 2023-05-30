@@ -10,16 +10,15 @@ module.exports.getProducts = async () => {
   const dynamodb = new AWS.DynamoDB.DocumentClient();
   const result = await dynamodb.scan(scanParams).promise();
 
-  if (result.Count === 0) {
-    return formatResponse({
-      message: "No products found",
-      status: 404,
-    });
-  }
+  // if (result.Count === 0) {
+  //   return formatResponse({
+  //     message: "No products found",
+  //     status: 404,
+  //   });
+  // }
 
   return formatResponse({
-    message: "Products retrieved successfully",
-    response: result.Items,
+    response: result.Items || [] ,
     status: 200,
   });
 };
